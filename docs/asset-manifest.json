@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tca-trash-pandas/static/css/main.662c3361.css",
+    "main.js": "/tca-trash-pandas/static/js/main.3bc8049f.js",
+    "static/js/592.5c8b5b80.chunk.js": "/tca-trash-pandas/static/js/592.5c8b5b80.chunk.js",
+    "index.html": "/tca-trash-pandas/index.html",
+    "main.662c3361.css.map": "/tca-trash-pandas/static/css/main.662c3361.css.map",
+    "main.3bc8049f.js.map": "/tca-trash-pandas/static/js/main.3bc8049f.js.map",
+    "592.5c8b5b80.chunk.js.map": "/tca-trash-pandas/static/js/592.5c8b5b80.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.662c3361.css",
+    "static/js/main.3bc8049f.js"
+  ]
+}
