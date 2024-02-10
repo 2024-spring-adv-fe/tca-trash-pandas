@@ -6,28 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Home } from './Home'
-
-
-const Setup = () => {
-  return (
-    <h3>
-      Setup
-    </h3>
-    );
-};
-
-const Play = () => {
-  return (
-    <>
-    <h3>
-      Play
-    </h3>
-    <p>
-      play the game and just tab-a-tap-a-tap
-    </p>
-  </>
-  );
-};
+import { Play } from './Play'
+import { Setup } from './Setup'
 
 const App = () => {
 
