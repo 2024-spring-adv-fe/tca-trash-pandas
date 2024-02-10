@@ -1,5 +1,10 @@
+import { useNavigate} from 'react-router-dom' ;
+
 export const Play = () => {
-    return (
+  
+  const nav = useNavigate();
+  
+  return (
       <>
         <h3>
           Play
@@ -9,6 +14,7 @@ export const Play = () => {
         </p>
         <button
             className="btn btn-outline btn-primary"
+            onClick={() => nav(-2)}
         >
             Done
         </button>
