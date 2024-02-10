@@ -6,7 +6,7 @@ export const Setup = () => {
     return (
         <>
             <h3>
-                Setup
+                Trash Pandas Setup
             </h3>
             <button
                 className="btn btn-link"
