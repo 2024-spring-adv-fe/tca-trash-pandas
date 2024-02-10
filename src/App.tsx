@@ -5,14 +5,8 @@ import {
   createHashRouter,
   RouterProvider,
 } from "react-router-dom";
+import { Home } from './Home'
 
-const Home = () => {
-  return (
-    <h3>
-      Home
-    </h3>
-  );
-};
 
 const Setup = () => {
   return (
