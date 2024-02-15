@@ -8,6 +8,47 @@ import {
 import { Home } from './Home'
 import { Play } from './Play'
 import { Setup } from './Setup'
+import { GameResult } from './GameResults'
+
+const dummyGameResults: GameResult[] = [
+  {
+    winner: "Tom"
+    , players: [
+      "Tom"
+      , "Batu"
+      , "Julia"
+      , "Melisa"
+      , "John"
+    ]
+  }
+  , {
+    winner: "John"
+    , players: [
+      "Batu"
+      , "Julia"
+      , "Melisa"
+      , "John"
+    ]
+  }
+  , {
+    winner: "John"
+    , players: [
+      "Tom"
+      , "Batu"
+      , "Julia"
+      , "Melisa"
+      , "John"
+    ]
+  }
+  , {
+    winner: "Harry"
+    , players: [
+      "Harry"
+      , "hermione"
+      , "Ron"
+    ]
+  }
+];
 
 const App = () => {
 
@@ -24,14 +65,14 @@ const App = () => {
       path: "/play",
       element: <Play />
     },
-  ]);  
+  ]);
 
   return (
-    <div 
+    <div
       className="App p-3"
     >
-      <RouterProvider 
-        router={router} 
+      <RouterProvider
+        router={router}
       />
     </div>
   );
