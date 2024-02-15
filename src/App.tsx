@@ -8,7 +8,7 @@ import {
 import { Home } from './Home'
 import { Play } from './Play'
 import { Setup } from './Setup'
-import { GameResult } from './GameResults'
+import { GameResult, getLeaderboard } from './GameResults'
 
 const dummyGameResults: GameResult[] = [
   {
@@ -55,7 +55,9 @@ const App = () => {
   const router = createHashRouter([
     {
       path: "/",
-      element: <Home />
+      element: <Home
+        leaderboardData={getLeaderboard(dummyGameResults)}
+      />
     },
     {
       path: "/setup",
