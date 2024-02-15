@@ -1,4 +1,4 @@
-import { useNavigate} from 'react-router-dom' ;
+import { useNavigate } from 'react-router-dom';
 
 export const Setup = () => {
     const nav = useNavigate();
@@ -16,4 +16,4 @@ export const Setup = () => {
             </button>
         </>
     );
-  };
+};
