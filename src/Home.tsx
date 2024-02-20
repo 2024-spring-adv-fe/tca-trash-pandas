@@ -11,6 +11,7 @@ export const Home: FC<HomeProps> = ({ leaderboardData }) => {
     console.log(leaderboardData);
 
 
+
     const nav = useNavigate();
     return (
         <>
@@ -23,6 +24,19 @@ export const Home: FC<HomeProps> = ({ leaderboardData }) => {
             >
                 Setup Game
             </button>
+            <div
+                className='card mt-3 bg-base-100 shadow-xl'
+            >
+                <div
+                    className='card-body'
+                >
+                    <h2
+                        className='card-title'
+                    >
+                        Leaderboard
+                    </h2>
+                </div>
+            </div>
         </>
     );
 };
