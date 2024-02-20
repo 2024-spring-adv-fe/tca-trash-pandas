@@ -22,25 +22,36 @@ export const Home: FC<HomeProps> = ({ leaderboardData }) => {
             >
                 Setup Game
             </button>
-            <div
-                className='card mt-3 bg-base-100 shadow-xl'
-            >
-                <div
-                    className='card-body'
-                >
-                    <h2
-                        className='card-title'
-                    >
+            <div className='card mt-3 bg-base-100 shadow-xl'>
+                <div className='card-body'>
+                    <h2 className='card-title'>
                         Leaderboard
                     </h2>
-                    {
-                        leaderboardData.length > 0
-                            ? leaderboardData.map(x => (
-                                <p>
-                                    {x.name}
-                                </p>
-                            ))
-                            : (<p> Play a game to see the leaderboard!</p>)
+                    {leaderboardData.length > 0
+                        ? (<table className='table'>
+                            <thead>
+                                <tr>
+                                    <th>W</th>
+                                    <th>L</th>
+                                    <th>AVE</th>
+                                    <th>Player</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {leaderboardData.map(lbe => (
+                                    <tr>
+                                        <td>{lbe.wins}</td>
+                                        <td>{lbe.losses}</td>
+                                        <td>{lbe.avg}</td>
+                                        <td>{lbe.name}</td>
+                                    </tr>
+                                ))
+                                }
+                            </tbody>
+
+                        </table>
+                        )
+                        : (<p> Play a game to see the leaderboard!</p>)
                     }
                 </div>
             </div>
