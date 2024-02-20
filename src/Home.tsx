@@ -8,8 +8,6 @@ interface HomeProps {
 }
 
 export const Home: FC<HomeProps> = ({ leaderboardData }) => {
-    console.log(leaderboardData);
-
     const nav = useNavigate();
     return (
         <>
