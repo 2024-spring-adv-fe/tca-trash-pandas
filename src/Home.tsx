@@ -4,7 +4,6 @@ import { FC, useEffect } from 'react';
 
 export const AppTitle = "Trash Pandas Companion App";
 
-
 interface HomeProps {
     leaderboardData: LeaderboardEntry[];
     setTitle: (t: string) => void;
@@ -18,14 +17,16 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
 
     const nav = useNavigate();
     return (
-        <>
+        <div
+            className='flex flex-col gap-3'
+        >
             <button
-                className="btn btn-secondary"
+                className="btn btn-lg btn-primary"
                 onClick={() => nav('/setup')}
             >
-                Setup Game
+                Play
             </button>
-            <div className='card mt-3 bg-base-100 shadow-xl'>
+            <div className='card bg-base-100 shadow-xl'>
                 <div className='card-body'>
                     <h2 className='card-title'>
                         Leaderboard
@@ -66,6 +67,6 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                     </h2>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
