@@ -18,15 +18,15 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
     const nav = useNavigate();
     return (
         <div
-            className='flex flex-col gap-3'
+            className='flex flex-col '
         >
             <button
-                className="btn btn-lg btn-primary"
+                className="btn btn-lg btn-primary "
                 onClick={() => nav('/setup')}
             >
                 Play
             </button>
-            <div className='card bg-base-100 shadow-xl'>
+            <div className='card bg-neutral-content shadow-xl'>
                 <div className='card-body'>
                     <h2 className='card-title'>
                         Leaderboard
@@ -60,13 +60,14 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                 </div>
             </div>
 
-            <div className='card mt-3 bg-base-100 shadow-xl'>
+            <div className='card mt-3 bg-neutral-content shadow-xl'>
                 <div className='card-body'>
                     <h2 className='card-title'>
-                        Ave Rolls to bust
+                        Average Rolls / Turn
                     </h2>
                 </div>
             </div>
         </div>
+
     );
 };
