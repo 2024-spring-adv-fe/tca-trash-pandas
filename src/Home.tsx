@@ -32,7 +32,7 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                     <h2 className='card-title'>
                         General
                     </h2>
-                    <table className='table table-xs'>
+                    <table className='table'>
 
                         <tbody>
                             <tr>
@@ -64,7 +64,7 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                         Leaderboard
                     </h2>
                     {leaderboardData.length > 0
-                        ? (<table className='table table-xs'>
+                        ? (<table className='table'>
                             <thead>
                                 <tr>
                                     <th>W</th>
@@ -97,7 +97,7 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                     <h2 className='card-title'>
                         Average Rolls / Turn
                     </h2>
-                    <table className='table table-xs'>
+                    <table className='table '>
                         <thead>
                             <tr>
                                 <th>Name</th>
