@@ -33,7 +33,6 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                         General
                     </h2>
                     <table className='table'>
-
                         <tbody>
                             <tr>
                                 <td>Total Games</td>
@@ -52,11 +51,9 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                                 <td>10m 12s</td>
                             </tr>
                         </tbody>
-
                     </table>
                 </div>
             </div>
-
 
             <div className='card bg-base-200 shadow-xl m-1.5'>
                 <div className='card-body p-2' >
@@ -84,7 +81,6 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                                 ))
                                 }
                             </tbody>
-
                         </table>
                         )
                         : (<p> Play a game to see the leaderboard!</p>)
@@ -102,7 +98,6 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                             <tr>
                                 <th>Name</th>
                                 <th># Rolls</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -118,13 +113,10 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                                 <td>Katlyn</td>
                                 <td>4</td>
                             </tr>
-
                         </tbody>
-
                     </table>
                 </div>
             </div>
         </div>
-
     );
 };
