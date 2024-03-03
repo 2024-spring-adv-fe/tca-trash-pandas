@@ -21,13 +21,14 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
             className='flex flex-col '
         >
             <button
-                className="btn btn-lg btn-primary "
+                className="btn btn-lg btn-primary p-2 "
                 onClick={() => nav('/setup')}
             >
                 Play
             </button>
+
             <div className='card bg-neutral-content shadow-xl'>
-                <div className='card-body'>
+                <div className='card-body p-2' >
                     <h2 className='card-title'>
                         Leaderboard
                     </h2>
