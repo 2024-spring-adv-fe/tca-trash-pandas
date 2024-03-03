@@ -21,19 +21,50 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
             className='flex flex-col '
         >
             <button
-                className="btn btn-lg btn-primary p-2 "
+                className="btn btn-lg btn-primary"
                 onClick={() => nav('/setup')}
             >
                 Play
             </button>
 
-            <div className='card bg-neutral-content shadow-xl'>
+            <div className='card bg-base-200 shadow-xl m-1.5'>
+                <div className='card-body p-2' >
+                    <h2 className='card-title'>
+                        General
+                    </h2>
+                    <table className='table table-xs'>
+
+                        <tbody>
+                            <tr>
+                                <td>Total Games</td>
+                                <td> 10</td>
+                            </tr>
+                            <tr>
+                                <td>Last Played</td>
+                                <td>2d ago</td>
+                            </tr>
+                            <tr>
+                                <td>Shortest Game</td>
+                                <td>3m 25s</td>
+                            </tr>
+                            <tr>
+                                <td>Longest Game</td>
+                                <td>10m 12s</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+
+            <div className='card bg-base-200 shadow-xl m-1.5'>
                 <div className='card-body p-2' >
                     <h2 className='card-title'>
                         Leaderboard
                     </h2>
                     {leaderboardData.length > 0
-                        ? (<table className='table'>
+                        ? (<table className='table table-xs'>
                             <thead>
                                 <tr>
                                     <th>W</th>
@@ -61,11 +92,36 @@ export const Home: FC<HomeProps> = ({ leaderboardData, setTitle }) => {
                 </div>
             </div>
 
-            <div className='card mt-3 bg-neutral-content shadow-xl'>
+            <div className='card mt-3 bg-base-200 shadow-xl m-1.5'>
                 <div className='card-body'>
                     <h2 className='card-title'>
                         Average Rolls / Turn
                     </h2>
+                    <table className='table table-xs'>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th># Rolls</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Melisa</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>Hailey</td>
+                                <td>3.5</td>
+                            </tr>
+                            <tr>
+                                <td>Katlyn</td>
+                                <td>4</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
                 </div>
             </div>
         </div>
