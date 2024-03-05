@@ -8,7 +8,7 @@ import {
 import { Home, AppTitle } from './Home'
 import { Play } from './Play'
 import { Setup } from './Setup'
-import { GameResult, getLeaderboard } from './GameResults'
+import { GameResult, getLeaderboard, getGeneralFacts } from './GameResults'
 
 const dummyGameResults: GameResult[] = [
   {
@@ -57,6 +57,7 @@ const App = () => {
       path: "/",
       element: <Home
         leaderboardData={getLeaderboard(gameResults)}
+        generalFacts={getGeneralFacts(gameResults)}
         setTitle={setTitle}
       />
     },
