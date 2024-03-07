@@ -10,7 +10,11 @@ interface HomeProps {
     generalFacts: GeneralFacts;
 }
 
-export const Home: FC<HomeProps> = ({ leaderboardData, setTitle, generalFacts }) => {
+export const Home: FC<HomeProps> = ({
+    leaderboardData
+    , setTitle
+    , generalFacts
+}) => {
     useEffect(
         () => setTitle(AppTitle)
         , []
