@@ -5,10 +5,15 @@ import { FC, useEffect, useState } from 'react';
 interface PlayProps {
   addNewGameResult: (result: GameResult) => void;
   setTitle: (t: string) => void;
+  chosenPlayers: string[];
 }
 
 
-export const Play: FC<PlayProps> = ({ addNewGameResult, setTitle }) => {
+export const Play: FC<PlayProps> = ({
+  addNewGameResult
+  , setTitle
+  , chosenPlayers
+}) => {
   const [start, setStart] = useState(new Date().toISOString());
 
   useEffect(
@@ -67,24 +72,29 @@ export const Play: FC<PlayProps> = ({ addNewGameResult, setTitle }) => {
         </div>
 
       </div >
+      {
+        chosenPlayers.map(x => (
+          <button
+            className="btn btn-lg btn-primary"
+            onClick={() => {
+              addNewGameResult({
+                winner: x
+                , players: [
+                  "Tom"
+                  , "Taylor"
+                ]
+                , start: start
+                , end: new Date().toISOString()
+              });
+              nav(-2)
+            }}
+          >
+            {x} Won
+          </button>
 
-      <button
-        className="btn btn-lg btn-primary"
-        onClick={() => {
-          addNewGameResult({
-            winner: "Tom"
-            , players: [
-              "Tom"
-              , "Taylor"
-            ]
-            , start: start
-            , end: new Date().toISOString()
-          });
-          nav(-2)
-        }}
-      >
-        Done - End Game
-      </button>
+        ))
+      }
+
       <p className='text-xs'>
         Play the game and tap-a-tap-a-tap
       </p>
