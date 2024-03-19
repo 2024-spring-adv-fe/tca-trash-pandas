@@ -79,14 +79,11 @@ export const Play: FC<PlayProps> = ({
             onClick={() => {
               addNewGameResult({
                 winner: x
-                , players: [
-                  "Tom"
-                  , "Taylor"
-                ]
+                , players: chosenPlayers
                 , start: start
                 , end: new Date().toISOString()
               });
-              nav(-2)
+              nav(-2);
             }}
           >
             {x} Won
