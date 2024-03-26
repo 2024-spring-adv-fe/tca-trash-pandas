@@ -19,12 +19,34 @@ export const Setup: FC<SetupProps> = ({
         , checked: false
     })));
 
+    const [newPlayerName, setNewPlayerName] = useState("");
+
     useEffect(
         () => setTitle("Game Setup")
         , []
     );
 
     const nav = useNavigate();
+
+    const validateAndAddNewPlayer = () => {
+
+        if (
+            newPlayerName.length > 0
+            && !availablePlayers.some(x => x.name.toUpperCase() === newPlayerName.toUpperCase())
+        ) {
+            setAvailablePlayers(
+                [
+                    ...availablePlayers
+                    , {
+                        name: newPlayerName
+                        , checked: true
+                    }
+                ].sort((a, b) => a.name.localeCompare(b.name))
+            );
+
+            setNewPlayerName("");
+        }
+    };
 
     return (
         <div
@@ -49,6 +71,24 @@ export const Setup: FC<SetupProps> = ({
             <div
                 className='card bg-base-200 shadow-xl m-1.5'
             >
+                <div
+                    className='flex items-center mb-5'
+                >
+                    <input
+                        type="text"
+                        placeholder="Enter new player name"
+                        className="input input-bordered w-full max-w-xs"
+                        value={newPlayerName}
+                        onChange={(e) => setNewPlayerName(e.target.value)}
+                    />
+                    <button
+                        className='btn btn-md btn-primary ml-3'
+                        onClick={validateAndAddNewPlayer}
+                    >
+                        Add
+                    </button>
+                </div>
+
                 {
                     availablePlayers.map(x => (
                         <div className="form-control"
