@@ -96,27 +96,27 @@ export const Home: FC<HomeProps> = ({
             <div className='card mt-3 bg-base-200 shadow-xl m-1.5'>
                 <div className='card-body'>
                     <h2 className='card-title'>
-                        Average Rolls / Turn
+                        Average Points / Turn
                     </h2>
                     <table className='table '>
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th># Rolls</th>
+                                <th># Points</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Melisa</td>
-                                <td>3</td>
+                                <td>52</td>
                             </tr>
                             <tr>
                                 <td>Hailey</td>
-                                <td>3.5</td>
+                                <td>43.75</td>
                             </tr>
                             <tr>
                                 <td>Katlyn</td>
-                                <td>4</td>
+                                <td>48.25</td>
                             </tr>
                         </tbody>
                     </table>
