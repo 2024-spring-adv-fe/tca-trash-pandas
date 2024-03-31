@@ -50,19 +50,22 @@ export const Play: FC<PlayProps> = ({
               </h2>
 
               <div className="  card-actions justify-center p-2">
-                <p className="self-center">Roll Count</p>
-                <button className="btn btn-error self-center">-</button>
-                <p className="p-3 self-center border-b-2">#</p>
-                <button className="btn btn-success">+</button>
+                <p className="self-center">Points Stashed</p>
+                <button className="btn btn-success">+1</button>
+                <button className="btn btn-success">+5</button>
+                <button className="btn btn-success">+10</button>
+
+                <h2 className="text-left">Total Points</h2>
+                <h2 className="text-right underline">38</h2>
+
+
+
+
+
                 {/* the p above is placeholder where I Will display # of rolls. also need to fix spacing  */}
               </div>
 
-              <div className="  card-actions justify-center p-2">
-                {/* <button className="btn btn-outline btn-warning self-center">Forced Roll</button> */}
-                <button className="btn btn-outline btn-error self-center">BUST End Turn</button>
-                <button className="btn btn-outline btn-success">End Turn</button>
-                {/* the p above is placeholder where I Will display # of rolls. also need to fix spacing  */}
-              </div>
+
 
               <button
                 key={x}
