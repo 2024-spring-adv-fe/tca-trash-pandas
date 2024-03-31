@@ -8,13 +8,14 @@ interface PlayProps {
   chosenPlayers: string[];
 }
 
-
 export const Play: FC<PlayProps> = ({
   addNewGameResult
   , setTitle
   , chosenPlayers
 }) => {
   const [start, setStart] = useState(new Date().toISOString());
+
+  const [playerPoints, setPlayerPoints] = useState<[string, number][]>(chosenPlayers.map(x => [x, 0]));
 
   useEffect(
     () => setTitle("Play Trash Pandas")
@@ -34,61 +35,52 @@ export const Play: FC<PlayProps> = ({
   };
 
   return (
-    <div
-      className='flex flex-col gap-3'
-    >
-      {
-        chosenPlayers.map(x => (
-          <div className="card-bordered w-96 bg-base-200  shadow-xl ">
-            <div className="card-body">
-
-              <h2
-                className='card-title'
-              // key={x}
-              >
-                {x}
+    <div className='flex flex-col gap-3'>
+      {chosenPlayers.map(x => (
+        <div className="card-bordered w-96 bg-base-200  shadow-xl ">
+          <div className="card-body">
+            <h2 className='card-title'
+            // key={x}
+            >
+              {x}
+            </h2>
+            <div className="card-actions justify-center p-2">
+              <p className="self-center">Points Stashed</p>
+              <button className="btn btn-success"
+                onClick={() =>
+                  setPlayerPoints(playerPoints.map(y => [
+                    y[0]
+                    , y[0] === x ? y[1] + 1 : y[1]
+                  ])
+                  )} > +1  </button>
+              <button className="btn btn-success"
+                onClick={() =>
+                  setPlayerPoints(playerPoints.map(y => [
+                    y[0]
+                    , y[0] === x ? y[1] + 5 : y[1]
+                  ])
+                  )} > +5  </button>
+              <button className="btn btn-success"
+                onClick={() =>
+                  setPlayerPoints(playerPoints.map(y => [
+                    y[0]
+                    , y[0] === x ? y[1] + 10 : y[1]
+                  ])
+                  )} > +10  </button>
+              <h2 className="text-left">Total Points</h2>
+              <h2 className='text-2xl font-bold text-right'>
+                {playerPoints.find(y => y[0] === x)![1]}
               </h2>
-
-              <div className="  card-actions justify-center p-2">
-                <p className="self-center">Points Stashed</p>
-                <button className="btn btn-success">+1</button>
-                <button className="btn btn-success">+5</button>
-                <button className="btn btn-success">+10</button>
-
-                <h2 className="text-left">Total Points</h2>
-                <h2 className="text-right underline">38</h2>
-
-
-
-
-
-                {/* the p above is placeholder where I Will display # of rolls. also need to fix spacing  */}
-              </div>
-
-
-
-              <button
-                key={x}
-                className="btn btn-lg btn-primary"
-                onClick={() => gameOver(x)}
-              >
-                {x} Won
-              </button>
-
             </div>
-          </div >
-        ))
+
+            <button key={x} className="btn btn-lg btn-primary"
+              onClick={() => gameOver(x)}>
+              {x} Won
+            </button>
+          </div>
+        </div >
+      ))
       }
     </div>
   );
 };
-
-
-// Minus Button
-// <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-//   <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-// </svg>
-// cicrcle<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-// <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-// </svg>
-
