@@ -13,6 +13,7 @@ export type GameResult = {
     players: string[];
     start: string;
     end: string;
+    playerPoints: [string, number][];
 };
 
 export type LeaderboardEntry = {
@@ -29,6 +30,12 @@ export type GeneralFacts = {
     longestGame: string;
 };
 
+export type PointFunFacts = {
+    totalPoints: number;
+    totalGames: number;
+    avg: number;
+    name: string;
+};
 // Exported Funcitons
 
 export const getPreviousPlayers = (results: GameResult[]) => {
@@ -92,6 +99,29 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
     };
 };
 
+export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
+    // const players = getPreviousPlayers(results);
+    // return players.map(
+    //     // x => getPointEntryForPlayer(results, x)
+    // )
+    return (
+        [
+            {
+                totalPoints: 365
+                , totalGames: 5
+                , avg: 10
+                , name: "Melisa"
+            }
+            , {
+                totalPoints: 400
+                , totalGames: 4
+                , avg: 40
+                , name: "HHailey"
+            }
+        ]
+    )
+};
+
 // internal functions
 
 const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): LeaderboardEntry => {
@@ -106,12 +136,32 @@ const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): Le
     return {
         wins: playerWins
         , losses: playerGames - playerWins
-
         , avg: playerGames > 0
             ? playerWins / playerGames
             : 0
-
         , name: player
     };
 };
+
+// const getPointEntryForPlayer = (results: GameResult[], player: string, points: number): PointFunFacts => {
+//     const playerTotalPoints = results.map(
+//         (x) => {
+//             points += Number(x.playerPoints)
+//         }
+//     )
+//     const playerGames = results.filter(
+//         x => x.players.some(
+//             y => y === player
+//         )
+//     ).length;
+//     console.log(playerTotalPoints)
+//     return {
+//         totalPoints: Number(playerTotalPoints)
+//         , totalGames: playerGames
+//         , avg: playerGames > 0
+//             ? Number(playerTotalPoints) / playerGames
+//             : 0
+//         , name: player
+//     };
+// };
 

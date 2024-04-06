@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { LeaderboardEntry, GeneralFacts } from './GameResults';
+import { LeaderboardEntry, GeneralFacts, PointFunFacts } from './GameResults';
 import { FC, useEffect } from 'react';
 
 export const AppTitle = "Trash Pandas Companion App";
@@ -8,12 +8,14 @@ interface HomeProps {
     leaderboardData: LeaderboardEntry[];
     setTitle: (t: string) => void;
     generalFacts: GeneralFacts;
+    pointFunFacts: PointFunFacts;
 }
 
 export const Home: FC<HomeProps> = ({
     leaderboardData
     , setTitle
     , generalFacts
+    , pointFunFacts
 }) => {
     useEffect(
         () => setTitle(AppTitle)
@@ -120,6 +122,7 @@ export const Home: FC<HomeProps> = ({
                             </tr>
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
