@@ -13,6 +13,7 @@ export type GameResult = {
     players: string[];
     start: string;
     end: string;
+    playerPoints: [string, number][];
 };
 
 export type LeaderboardEntry = {
@@ -27,6 +28,13 @@ export type GeneralFacts = {
     lastPlayed: string;
     shortestGame: string;
     longestGame: string;
+};
+
+export type PointFunFacts = {
+    maxPointValue: number;
+    maxPointPlayers: string;
+    minPointValue: number;
+    minPointPlayers: string;
 };
 
 // Exported Funcitons
@@ -92,6 +100,36 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
     };
 };
 
+export const getPointFunFacts = (results: GameResult[]): PointFunFacts => {
+
+    // Get all player point tuples...
+    const allPlayerPoints = results.flatMap(x => x.playerPoints);
+
+    // Map to just the points...
+    const allPlayerPointValues = allPlayerPoints.map(x => x[1]);
+
+    // Get the max/min...
+    const maxPointValue = Math.max(...allPlayerPointValues);
+    const minPointValue = Math.min(...allPlayerPointValues);
+
+    // Then find the players with matching max/min 
+    // and put them in a display object...
+    return {
+        maxPointValue
+        , maxPointPlayers: allPlayerPoints
+            .filter(x => x[1] === maxPointValue)
+            .map(x => x[0])
+            .filter((x, i, a) => a.indexOf(x) === i) // Remove dupes
+            .join(', ')
+        , minPointValue
+        , minPointPlayers: allPlayerPoints
+            .filter(x => x[1] === minPointValue)
+            .map(x => x[0])
+            .filter((x, i, a) => a.indexOf(x) === i) // Remove dupes
+            .join(', ')
+    };
+
+};
 // internal functions
 
 const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): LeaderboardEntry => {

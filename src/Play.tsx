@@ -30,6 +30,7 @@ export const Play: FC<PlayProps> = ({
       , players: chosenPlayers
       , start: start
       , end: new Date().toISOString()
+      , playerPoints
     });
     nav(-2);
   };

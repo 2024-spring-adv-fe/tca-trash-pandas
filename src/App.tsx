@@ -8,7 +8,7 @@ import {
 import { Home, AppTitle } from './Home'
 import { Play } from './Play'
 import { Setup } from './Setup'
-import { GameResult, getLeaderboard, getGeneralFacts, getPreviousPlayers } from './GameResults'
+import { GameResult, getLeaderboard, getGeneralFacts, getPreviousPlayers, getPointFunFacts } from './GameResults'
 
 const dummyGameResults: GameResult[] = [
   {
@@ -20,9 +20,15 @@ const dummyGameResults: GameResult[] = [
       , "Melisa"
       , "John"
     ]
-
     , start: "2024-02-28T18:10:32.123Z"
     , end: "2024-02-28T18:15:34.123Z"
+    , playerPoints: [
+      ["Tom", 20]
+      , ["Batu", 10]
+      , ["Julia", 10]
+      , ["Melisa", 10]
+      , ["John", 10]
+    ]
   }
   , {
     winner: "John"
@@ -34,6 +40,12 @@ const dummyGameResults: GameResult[] = [
     ]
     , start: "2024-02-28T18:20:32.123Z"
     , end: "2024-02-28T18:47:34.123Z"
+    , playerPoints: [
+      ["Batu", 10]
+      , ["Julia", 10]
+      , ["Melisa", 10]
+      , ["John", 20]
+    ]
   }
 
 
@@ -61,6 +73,7 @@ const App = () => {
         leaderboardData={getLeaderboard(gameResults)}
         generalFacts={getGeneralFacts(gameResults)}
         setTitle={setTitle}
+        pointFunFacts={getPointFunFacts(gameResults)}
       />
     },
     {
