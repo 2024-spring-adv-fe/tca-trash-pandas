@@ -38,10 +38,9 @@ export const Play: FC<PlayProps> = ({
   return (
     <div className='flex flex-col gap-3'>
       {chosenPlayers.map(x => (
-        <div className="card-bordered w-96 bg-base-200  shadow-xl ">
+        <div key={x} className="card-bordered w-96 bg-base-200  shadow-xl ">
           <div className="card-body">
             <h2 className='card-title'
-            // key={x}
             >
               {x}
             </h2>

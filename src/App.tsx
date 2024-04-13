@@ -74,7 +74,7 @@ const App = () => {
         leaderboardData={getLeaderboard(gameResults)}
         generalFacts={getGeneralFacts(gameResults)}
         setTitle={setTitle}
-        pointFunFacts={getPointFunFacts(gameResults)}
+      // pointFunFacts={getPointFunFacts(gameResults)}
       />
     },
     {

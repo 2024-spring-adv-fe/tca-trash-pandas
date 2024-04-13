@@ -8,14 +8,14 @@ interface HomeProps {
     leaderboardData: LeaderboardEntry[];
     setTitle: (t: string) => void;
     generalFacts: GeneralFacts;
-    pointFunFacts: PointFunFacts;
+    // pointFunFacts: PointFunFacts;
 }
 
 export const Home: FC<HomeProps> = ({
     leaderboardData
     , setTitle
     , generalFacts
-    , pointFunFacts
+    // , pointFunFacts
 }) => {
     useEffect(
         () => setTitle(AppTitle)
