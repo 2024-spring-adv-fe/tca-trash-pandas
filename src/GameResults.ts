@@ -5,7 +5,6 @@ const formatterYMD = durationFormatter({
     allowMultiples: ['y', 'mo', 'd']
 })
 
-
 // Type Definitions
 
 export type GameResult = {
@@ -37,6 +36,7 @@ export type PointFunFacts = {
     avg: number;
     name: string;
 };
+
 // Exported Funcitons
 
 export const getPreviousPlayers = (results: GameResult[]) => {
@@ -96,28 +96,33 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
                 : "n/a"
     };
 };
-
-// export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
-// const players = getPreviousPlayers(results);
-// return players.map(
-//     x => getPointEntryForPlayer(results, x)
-// ) 
-
+//comment in this line to play and get the pointfunfactsworking
 
 export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
-    return (
-        [
-            {
-                avg: 10
-                , name: "Melisa"
-            }
-            , {
-                avg: 25
-                , name: "HAiley"
-            }
-        ]
+    const players = getPreviousPlayers(results);
+    return players.map(
+        x => getPointEntryForPlayer(results, x)
     )
 }
+
+
+//When testing rest of app comment below code in - to harc code the get point fun facts. 
+// export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
+//     return (
+//         [
+//             {
+//                 avg: 10
+//                 , name: "Melisa"
+//             }
+//             , {
+//                 avg: 25
+//                 , name: "HAiley"
+//             }
+//         ]
+//     )
+
+// }
+
 // internal functions
 
 const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): LeaderboardEntry => {
@@ -150,7 +155,8 @@ const getPointEntryForPlayer = (results: GameResult[], player: string, points: n
             y => y === player
         )
     ).length;
-    console.log(playerTotalPoints)
+    // console.log(playerTotalPoints)
+    // console.log(results)
     return {
         avg: playerGames > 0
             ? Number(playerTotalPoints) / playerGames
@@ -158,4 +164,3 @@ const getPointEntryForPlayer = (results: GameResult[], player: string, points: n
         , name: player
     };
 };
-
