@@ -8,14 +8,14 @@ interface HomeProps {
     leaderboardData: LeaderboardEntry[];
     setTitle: (t: string) => void;
     generalFacts: GeneralFacts;
-    // pointFunFacts: PointFunFacts;
+    pointFunFacts: PointFunFacts[];
 }
 
 export const Home: FC<HomeProps> = ({
     leaderboardData
     , setTitle
     , generalFacts
-    // , pointFunFacts
+    , pointFunFacts
 }) => {
     useEffect(
         () => setTitle(AppTitle)
@@ -100,29 +100,27 @@ export const Home: FC<HomeProps> = ({
                     <h2 className='card-title'>
                         Average Points / Turn
                     </h2>
-                    <table className='table '>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th># Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Melisa</td>
-                                <td>52</td>
-                            </tr>
-                            <tr>
-                                <td>Hailey</td>
-                                <td>43.75</td>
-                            </tr>
-                            <tr>
-                                <td>Katlyn</td>
-                                <td>48.25</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+                    {pointFunFacts.length > 0
+                        ? (<table className='table'>
+                            <thead>
+                                <tr>
+                                    <th>Player</th>
+                                    <th>Average Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {pointFunFacts.map(pff => (
+                                    <tr key={pff.name}                                    >
+                                        <td>{pff.name}</td>
+                                        <td>{pff.avg.toFixed(3)}</td>
+                                    </tr>
+                                ))
+                                }
+                            </tbody>
+                        </table>
+                        )
+                        : (<p> Play a game to see the leaderboard!</p>)
+                    }
                 </div>
             </div>
         </div>

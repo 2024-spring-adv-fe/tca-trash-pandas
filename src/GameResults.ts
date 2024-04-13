@@ -31,8 +31,9 @@ export type GeneralFacts = {
 };
 
 export type PointFunFacts = {
-    totalPoints: number;
-    totalGames: number;
+    // totalPoints: number;
+    // totalGames: number;
+    //Not sure I need those two lines above as i am only using the bottom two on the leaderboard
     avg: number;
     name: string;
 };
@@ -49,12 +50,9 @@ export const getPreviousPlayers = (results: GameResult[]) => {
     ].sort(
         (a, b) => a.localeCompare(b)
     );
-
 };
 
-
 export const getLeaderboard = (results: GameResult[]): LeaderboardEntry[] => {
-
     const players = getPreviousPlayers(results);
 
     return players.map(
@@ -99,29 +97,27 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
     };
 };
 
+// export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
+// const players = getPreviousPlayers(results);
+// return players.map(
+//     x => getPointEntryForPlayer(results, x)
+// ) 
+
+
 export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
-    // const players = getPreviousPlayers(results);
-    // return players.map(
-    //     // x => getPointEntryForPlayer(results, x)
-    // )
     return (
         [
             {
-                totalPoints: 365
-                , totalGames: 5
-                , avg: 10
+                avg: 10
                 , name: "Melisa"
             }
             , {
-                totalPoints: 400
-                , totalGames: 4
-                , avg: 40
-                , name: "HHailey"
+                avg: 25
+                , name: "HAiley"
             }
         ]
     )
-};
-
+}
 // internal functions
 
 const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): LeaderboardEntry => {
@@ -143,25 +139,23 @@ const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): Le
     };
 };
 
-// const getPointEntryForPlayer = (results: GameResult[], player: string, points: number): PointFunFacts => {
-//     const playerTotalPoints = results.map(
-//         (x) => {
-//             points += Number(x.playerPoints)
-//         }
-//     )
-//     const playerGames = results.filter(
-//         x => x.players.some(
-//             y => y === player
-//         )
-//     ).length;
-//     console.log(playerTotalPoints)
-//     return {
-//         totalPoints: Number(playerTotalPoints)
-//         , totalGames: playerGames
-//         , avg: playerGames > 0
-//             ? Number(playerTotalPoints) / playerGames
-//             : 0
-//         , name: player
-//     };
-// };
+const getPointEntryForPlayer = (results: GameResult[], player: string, points: number): PointFunFacts => {
+    const playerTotalPoints = results.map(
+        (x) => {
+            points += Number(x.playerPoints)
+        }
+    )
+    const playerGames = results.filter(
+        x => x.players.some(
+            y => y === player
+        )
+    ).length;
+    console.log(playerTotalPoints)
+    return {
+        avg: playerGames > 0
+            ? Number(playerTotalPoints) / playerGames
+            : 0
+        , name: player
+    };
+};
 

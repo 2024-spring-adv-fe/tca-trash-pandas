@@ -7,7 +7,13 @@ import {
 import { Home, AppTitle } from './Home'
 import { Play } from './Play'
 import { Setup } from './Setup'
-import { GameResult, getLeaderboard, getGeneralFacts, getPreviousPlayers, getPointFunFacts } from './GameResults'
+import {
+  GameResult
+  , getLeaderboard
+  , getGeneralFacts
+  , getPreviousPlayers
+  , getPointFunFacts
+} from './GameResults'
 
 const dummyGameResults: GameResult[] = [
   {
@@ -74,7 +80,7 @@ const App = () => {
         leaderboardData={getLeaderboard(gameResults)}
         generalFacts={getGeneralFacts(gameResults)}
         setTitle={setTitle}
-      // pointFunFacts={getPointFunFacts(gameResults)}
+        pointFunFacts={getPointFunFacts(gameResults)}
       />
     },
     {
