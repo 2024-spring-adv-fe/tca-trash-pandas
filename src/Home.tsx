@@ -98,7 +98,7 @@ export const Home: FC<HomeProps> = ({
             <div className='card mt-3 bg-base-200 shadow-xl m-1.5'>
                 <div className='card-body'>
                     <h2 className='card-title'>
-                        Average Points / Turn
+                        Average Points / <span className='line-through'>Turn</span> Game
                     </h2>
                     {pointFunFacts.length > 0
                         ? (<table className='table'>

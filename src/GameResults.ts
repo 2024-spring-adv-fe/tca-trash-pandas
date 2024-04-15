@@ -144,22 +144,41 @@ const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): Le
     };
 };
 
-const getPointEntryForPlayer = (results: GameResult[], player: string, points: number): PointFunFacts => {
-    const playerTotalPoints = results.map(
-        (x) => {
-            points += Number(x.playerPoints)
-        }
-    )
+const getPointEntryForPlayer = (
+    results: GameResult[]
+    , player: string
+    // , points: number
+): PointFunFacts => {
+
+    // Get game results for player.
     const playerGames = results.filter(
         x => x.players.some(
             y => y === player
         )
-    ).length;
+    );
+
+    // Get the player's total points from their games.
+    const playerTotalPoints = playerGames
+        
+        // flatMap() to get an array of all the player point tuples.
+        .flatMap(x => x.playerPoints)
+
+        // filter() to just points for this player.
+        .filter(x => x[0] === player)
+
+        // reduce() to sum the points for the player.
+        .reduce(
+            (acc, x) => acc + x[1]
+            , 0
+        )
+    ;
+    
     // console.log(playerTotalPoints)
     // console.log(results)
+    
     return {
-        avg: playerGames > 0
-            ? Number(playerTotalPoints) / playerGames
+        avg: playerGames.length > 0
+            ? playerTotalPoints / playerGames.length
             : 0
         , name: player
     };
