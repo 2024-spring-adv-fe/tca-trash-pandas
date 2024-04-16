@@ -96,6 +96,7 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
                 : "n/a"
     };
 };
+
 //comment in this line to play and get the pointfunfactsworking
 
 export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
@@ -105,28 +106,9 @@ export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
     )
 }
 
-
-//When testing rest of app comment below code in - to harc code the get point fun facts. 
-// export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
-//     return (
-//         [
-//             {
-//                 avg: 10
-//                 , name: "Melisa"
-//             }
-//             , {
-//                 avg: 25
-//                 , name: "HAiley"
-//             }
-//         ]
-//     )
-
-// }
-
 // internal functions
 
 const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): LeaderboardEntry => {
-
     const playerWins = results.filter(x => x.winner === player).length;
     const playerGames = results.filter(
         x => x.players.some(
@@ -144,22 +126,20 @@ const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): Le
     };
 };
 
-const getPointEntryForPlayer = (results: GameResult[], player: string, points: number): PointFunFacts => {
-    const playerTotalPoints = results.map(
-        (x) => {
-            points += Number(x.playerPoints)
-        }
-    )
+const getPointEntryForPlayer = (results: GameResult[], player: string): PointFunFacts => {
     const playerGames = results.filter(
         x => x.players.some(
             y => y === player
         )
-    ).length;
-    // console.log(playerTotalPoints)
-    // console.log(results)
+    );
+    const playerTotalPoints = playerGames.flatMap
+        (x => x.playerPoints).filter
+        (x => x[0] === player).reduce
+        ((acc, x) => acc + x[1], 0
+        );
     return {
-        avg: playerGames > 0
-            ? Number(playerTotalPoints) / playerGames
+        avg: playerGames.length > 0
+            ? playerTotalPoints / playerGames.length
             : 0
         , name: player
     };

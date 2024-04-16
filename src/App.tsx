@@ -29,9 +29,9 @@ const dummyGameResults: GameResult[] = [
     , end: "2024-02-28T18:15:34.123Z"
     , playerPoints: [
       ["Melisa", 40]
-      , ["Hailey", 53]
+      , ["Hailey", 23]
       , ["Katlyn", 36]
-      , ["ObiWan", 42]
+      , ["ObiWan", 22]
       , ["Jason", 37]
     ]
   }
@@ -43,13 +43,14 @@ const dummyGameResults: GameResult[] = [
       "ObiWan"
       , "Melisa"
       , "Katlyn"
+      , "Hailey"
     ]
     , start: "2024-02-28T18:20:32.123Z"
     , end: "2024-02-28T18:47:34.123Z"
     , playerPoints: [
-      ["Melisa", 40]
+      ["Melisa", 20]
       , ["Hailey", 53]
-      , ["Katlyn", 36]
+      , ["Katlyn", 56]
       , ["ObiWan", 42]
     ]
   }
