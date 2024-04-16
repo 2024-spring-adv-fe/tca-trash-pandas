@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from './logo.svg';
 import './App.css';
 import {
   createHashRouter,
@@ -7,58 +8,45 @@ import {
 import { Home, AppTitle } from './Home'
 import { Play } from './Play'
 import { Setup } from './Setup'
-import {
-  GameResult
-  , getLeaderboard
-  , getGeneralFacts
-  , getPreviousPlayers
-  , getPointFunFacts
-} from './GameResults'
-
-
+import { GameResult, getLeaderboard, getGeneralFacts, getPreviousPlayers, getPointFunFacts } from './GameResults'
 
 const dummyGameResults: GameResult[] = [
   {
-    winner: "ObiWan"
+    winner: "Tom"
     , players: [
-      "Melisa"
-      , "Hailey"
-      , "Katlyn"
-      , "Jason"
-      , "ObiWan"
+      "Tom"
+      , "Batu"
+      , "Julia"
+      , "Melisa"
+      , "John"
     ]
     , start: "2024-02-28T18:10:32.123Z"
     , end: "2024-02-28T18:15:34.123Z"
     , playerPoints: [
-      ["Melisa", 40]
-      , ["Hailey", 23]
-      , ["Katlyn", 36]
-      , ["ObiWan", 22]
-      , ["Jason", 37]
-
+      ["Tom", 20]
+      , ["Batu", 10]
+      , ["Julia", 10]
+      , ["Melisa", 10]
+      , ["John", 10]
     ]
   }
-
-
   , {
-    winner: "Hailey"
+    winner: "John"
     , players: [
-      "ObiWan"
+      "Batu"
+      , "Julia"
       , "Melisa"
-      , "Katlyn"
-      , "Hailey"
+      , "John"
     ]
     , start: "2024-02-28T18:20:32.123Z"
     , end: "2024-02-28T18:47:34.123Z"
     , playerPoints: [
-      ["Melisa", 20]
-      , ["Hailey", 53]
-      , ["Katlyn", 56]
-      , ["ObiWan", 42]
-
+      ["Batu", 10]
+      , ["Julia", 10]
+      , ["Melisa", 10]
+      , ["John", 20]
     ]
   }
-
 
 
 ];

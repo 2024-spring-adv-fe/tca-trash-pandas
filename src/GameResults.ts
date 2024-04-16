@@ -5,6 +5,7 @@ const formatterYMD = durationFormatter({
     allowMultiples: ['y', 'mo', 'd']
 })
 
+
 // Type Definitions
 
 export type GameResult = {
@@ -30,13 +31,10 @@ export type GeneralFacts = {
 };
 
 export type PointFunFacts = {
-
-    // totalPoints: number;
-    // totalGames: number;
-    //Not sure I need those two lines above as i am only using the bottom two on the leaderboard
-    avg: number;
-    name: string;
-
+    maxPointValue: number;
+    maxPointPlayers: string;
+    minPointValue: number;
+    minPointPlayers: string;
 };
 
 // Exported Funcitons
@@ -52,9 +50,12 @@ export const getPreviousPlayers = (results: GameResult[]) => {
     ].sort(
         (a, b) => a.localeCompare(b)
     );
+
 };
 
+
 export const getLeaderboard = (results: GameResult[]): LeaderboardEntry[] => {
+
     const players = getPreviousPlayers(results);
 
     return players.map(
@@ -99,20 +100,40 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
     };
 };
 
+export const getPointFunFacts = (results: GameResult[]): PointFunFacts => {
 
-//comment in this line to play and get the pointfunfactsworking
+    // Get all player point tuples...
+    const allPlayerPoints = results.flatMap(x => x.playerPoints);
 
-export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
-    const players = getPreviousPlayers(results);
-    return players.map(
-        x => getPointEntryForPlayer(results, x)
-    )
-}
+    // Map to just the points...
+    const allPlayerPointValues = allPlayerPoints.map(x => x[1]);
 
+    // Get the max/min...
+    const maxPointValue = Math.max(...allPlayerPointValues);
+    const minPointValue = Math.min(...allPlayerPointValues);
 
+    // Then find the players with matching max/min 
+    // and put them in a display object...
+    return {
+        maxPointValue
+        , maxPointPlayers: allPlayerPoints
+            .filter(x => x[1] === maxPointValue)
+            .map(x => x[0])
+            .filter((x, i, a) => a.indexOf(x) === i) // Remove dupes
+            .join(', ')
+        , minPointValue
+        , minPointPlayers: allPlayerPoints
+            .filter(x => x[1] === minPointValue)
+            .map(x => x[0])
+            .filter((x, i, a) => a.indexOf(x) === i) // Remove dupes
+            .join(', ')
+    };
+
+};
 // internal functions
 
 const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): LeaderboardEntry => {
+
     const playerWins = results.filter(x => x.winner === player).length;
     const playerGames = results.filter(
         x => x.players.some(
@@ -123,28 +144,12 @@ const getLeaderboardEntryForPlayer = (results: GameResult[], player: string): Le
     return {
         wins: playerWins
         , losses: playerGames - playerWins
+
         , avg: playerGames > 0
             ? playerWins / playerGames
             : 0
+
         , name: player
     };
 };
 
-const getPointEntryForPlayer = (results: GameResult[], player: string): PointFunFacts => {
-    const playerGames = results.filter(
-        x => x.players.some(
-            y => y === player
-        )
-    );
-    const playerTotalPoints = playerGames.flatMap
-        (x => x.playerPoints).filter
-        (x => x[0] === player).reduce
-        ((acc, x) => acc + x[1], 0
-        );
-    return {
-        avg: playerGames.length > 0
-            ? playerTotalPoints / playerGames.length
-            : 0
-        , name: player
-    };
-};
