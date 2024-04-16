@@ -30,11 +30,13 @@ export type GeneralFacts = {
 };
 
 export type PointFunFacts = {
+
     // totalPoints: number;
     // totalGames: number;
     //Not sure I need those two lines above as i am only using the bottom two on the leaderboard
     avg: number;
     name: string;
+
 };
 
 // Exported Funcitons
@@ -97,6 +99,7 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFacts => {
     };
 };
 
+
 //comment in this line to play and get the pointfunfactsworking
 
 export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
@@ -105,6 +108,7 @@ export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
         x => getPointEntryForPlayer(results, x)
     )
 }
+
 
 // internal functions
 

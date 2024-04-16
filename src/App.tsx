@@ -15,6 +15,8 @@ import {
   , getPointFunFacts
 } from './GameResults'
 
+
+
 const dummyGameResults: GameResult[] = [
   {
     winner: "ObiWan"
@@ -33,6 +35,7 @@ const dummyGameResults: GameResult[] = [
       , ["Katlyn", 36]
       , ["ObiWan", 22]
       , ["Jason", 37]
+
     ]
   }
 
@@ -52,6 +55,7 @@ const dummyGameResults: GameResult[] = [
       , ["Hailey", 53]
       , ["Katlyn", 56]
       , ["ObiWan", 42]
+
     ]
   }
 

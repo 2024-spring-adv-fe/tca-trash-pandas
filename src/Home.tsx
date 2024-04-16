@@ -8,7 +8,9 @@ interface HomeProps {
     leaderboardData: LeaderboardEntry[];
     setTitle: (t: string) => void;
     generalFacts: GeneralFacts;
+
     pointFunFacts: PointFunFacts[];
+
 }
 
 export const Home: FC<HomeProps> = ({
@@ -120,6 +122,44 @@ export const Home: FC<HomeProps> = ({
                         </table>
                         )
                         : (<p> Play a game to see the leaderboard!</p>)
+                    }
+                </div>
+            </div>
+
+            <div className='card mt-3 bg-base-200 shadow-xl m-1.5'>
+                <div
+                    className='card-body p-3'
+                >
+                    <h2
+                        className='card-title'
+                    >
+                        Best/Worst Players
+                    </h2>
+                    {
+                        pointFunFacts.maxPointPlayers.length > 0
+                            ? (
+                                <table
+                                    className='table'
+                                >
+                                    <tbody>
+                                        <tr>
+                                            <td>Most Points</td>
+                                            <td className='text-right'>{pointFunFacts.maxPointValue}</td>
+                                            <td>{pointFunFacts.maxPointPlayers}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fewest Points</td>
+                                            <td className='text-right'>{pointFunFacts.minPointValue}</td>
+                                            <td>{pointFunFacts.minPointPlayers}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            )
+                            : (
+                                <p>
+                                    Play a game to see best/worst players!
+                                </p>
+                            )
                     }
                 </div>
             </div>
