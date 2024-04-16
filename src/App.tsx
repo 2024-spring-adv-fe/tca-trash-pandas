@@ -16,48 +16,50 @@ import {
 } from './GameResults'
 import { saveGameToCloud } from './tca-cloud-api';
 
-const dummyGameResults: GameResult[] = [
-  {
-    winner: "ObiWan"
-    , players: [
-      "Melisa"
-      , "Hailey"
-      , "Katlyn"
-      , "Jason"
-      , "ObiWan"
-    ]
-    , start: "2024-02-28T18:10:32.123Z"
-    , end: "2024-02-28T18:15:34.123Z"
-    , playerPoints: [
-      ["Melisa", 40]
-      , ["Hailey", 23]
-      , ["Katlyn", 36]
-      , ["ObiWan", 22]
-      , ["Jason", 37]
-    ]
-  }
-  , {
-    winner: "Hailey"
-    , players: [
-      "ObiWan"
-      , "Melisa"
-      , "Katlyn"
-      , "Hailey"
-    ]
-    , start: "2024-02-28T18:20:32.123Z"
-    , end: "2024-02-28T18:47:34.123Z"
-    , playerPoints: [
-      ["Melisa", 20]
-      , ["Hailey", 53]
-      , ["Katlyn", 56]
-      , ["ObiWan", 42]
-    ]
-  }
-];
+// const dummyGameResults: GameResult[] = [
+//   {
+//     winner: "ObiWan"
+//     , players: [
+//       "Melisa"
+//       , "Hailey"
+//       , "Katlyn"
+//       , "Jason"
+//       , "ObiWan"
+//     ]
+//     , start: "2024-02-28T18:10:32.123Z"
+//     , end: "2024-02-28T18:15:34.123Z"
+//     , playerPoints: [
+//       ["Melisa", 40]
+//       , ["Hailey", 23]
+//       , ["Katlyn", 36]
+//       , ["ObiWan", 22]
+//       , ["Jason", 37]
+//     ]
+//   }
+//   , {
+//     winner: "Hailey"
+//     , players: [
+//       "ObiWan"
+//       , "Melisa"
+//       , "Katlyn"
+//       , "Hailey"
+//     ]
+//     , start: "2024-02-28T18:20:32.123Z"
+//     , end: "2024-02-28T18:47:34.123Z"
+//     , playerPoints: [
+//       ["Melisa", 20]
+//       , ["Hailey", 53]
+//       , ["Katlyn", 56]
+//       , ["ObiWan", 42]
+//     ]
+//   }
+// ];
 
 const App = () => {
 
-  const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
+  const [gameResults, setGameResults] = useState<GameResult[]>([]);
+  // Uncomment this line to see app running with dummy game results - and uncomment the dummy results.  game results...
+  // const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
 
   const [title, setTitle] = useState(AppTitle);
 
