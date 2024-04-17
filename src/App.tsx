@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import {
   createHashRouter,
@@ -14,56 +14,39 @@ import {
   , getPreviousPlayers
   , getPointFunFacts
 } from './GameResults'
-import { saveGameToCloud } from './tca-cloud-api';
-
-// const dummyGameResults: GameResult[] = [
-//   {
-//     winner: "ObiWan"
-//     , players: [
-//       "Melisa"
-//       , "Hailey"
-//       , "Katlyn"
-//       , "Jason"
-//       , "ObiWan"
-//     ]
-//     , start: "2024-02-28T18:10:32.123Z"
-//     , end: "2024-02-28T18:15:34.123Z"
-//     , playerPoints: [
-//       ["Melisa", 40]
-//       , ["Hailey", 23]
-//       , ["Katlyn", 36]
-//       , ["ObiWan", 22]
-//       , ["Jason", 37]
-//     ]
-//   }
-//   , {
-//     winner: "Hailey"
-//     , players: [
-//       "ObiWan"
-//       , "Melisa"
-//       , "Katlyn"
-//       , "Hailey"
-//     ]
-//     , start: "2024-02-28T18:20:32.123Z"
-//     , end: "2024-02-28T18:47:34.123Z"
-//     , playerPoints: [
-//       ["Melisa", 20]
-//       , ["Hailey", 53]
-//       , ["Katlyn", 56]
-//       , ["ObiWan", 42]
-//     ]
-//   }
-// ];
+import { saveGameToCloud, loadGamesFromCloud } from './tca-cloud-api';
 
 const App = () => {
 
   const [gameResults, setGameResults] = useState<GameResult[]>([]);
-  // Uncomment this line to see app running with dummy game results - and uncomment the dummy results.  game results...
-  // const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
 
   const [title, setTitle] = useState(AppTitle);
 
   const [chosenPlayers, setChosenPlayers] = useState<string[]>([]);
+
+  useEffect(
+    () => {
+      const init = async () => {
+
+        if (!ignore) {
+          const cloudGameResults = await loadGamesFromCloud(
+            "msoldner1@madisoncollege.edu"
+            , "tca-trash-pandas-24s"
+          );
+
+          setGameResults(cloudGameResults);
+        }
+      };
+
+      let ignore = false;
+      init();
+
+      return () => {
+        ignore = true;
+      };
+    }
+    , []
+  );
 
   const addNewGameResult = async (result: GameResult) => {
     // Save the game result to the cloud.
@@ -73,7 +56,6 @@ const App = () => {
       , result.end
       , result
     )
-
     // Optimistically update the lifted state with the new game result.
     setGameResults(
       [
