@@ -28,7 +28,7 @@ export const Home: FC<HomeProps> = ({
             className='flex flex-col '
         >
             <button
-                className="btn btn-lg btn-primary"
+                className="btn btn-lg btn-success"
                 onClick={() => nav('/setup')}
             >
                 Play

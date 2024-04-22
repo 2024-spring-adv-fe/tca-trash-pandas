@@ -39,17 +39,25 @@ export const Play: FC<PlayProps> = ({
     <div className='flex flex-col gap-3'>
       <div className='card-bordered w-96 bg-base-200  shadow-xl'>
         <div className='card-body '>
-          <p>
-            Keep Track of Points Stashed at end of Game
-          </p>
-          <p>
-            Then choose a winner
-          </p>
-          <p>
-            Or quit to not save your game results
-          </p>
+          <ul className='list-disc'>
+            <li>
+              Play Game as normal
+            </li>
+            <li>
+              At game end track Points Stashed per player
+            </li>
+            <li>
+              Then choose a winner
+            </li>
+            <li>
+              Chosing a winner saves game results
+            </li>
+            <li>
+              Or quit to not save your game results
+            </li>
+          </ul>
           <p className="self-center">
-            <button className="btn btn-accent btn-lg " onClick={() => nav(-2)}>Quit</button>
+            <button className="btn btn-warning btn-lg text-lg " onClick={() => nav(-2)}>Quit</button>
           </p>
         </div>
       </div>
@@ -62,35 +70,35 @@ export const Play: FC<PlayProps> = ({
                 {x}
               </h2>
               <div className="card-actions justify-center p-2">
-                <p className="self-center">Points Stashed</p>
-                <button className="btn btn-secondary"
+                <p className="self-center text-lg">Points Stashed</p>
+                <button className="btn btn-info"
                   onClick={() =>
                     setPlayerPoints(playerPoints.map(y => [
                       y[0]
                       , y[0] === x ? y[1] + 1 : y[1]
                     ])
                     )} > +1  </button>
-                <button className="btn btn-secondary"
+                <button className="btn btn-info"
                   onClick={() =>
                     setPlayerPoints(playerPoints.map(y => [
                       y[0]
                       , y[0] === x ? y[1] + 5 : y[1]
                     ])
                     )} > +5  </button>
-                <button className="btn btn-secondary"
+                <button className="btn btn-info"
                   onClick={() =>
                     setPlayerPoints(playerPoints.map(y => [
                       y[0]
                       , y[0] === x ? y[1] + 10 : y[1]
                     ])
                     )} > +10  </button>
-                <h2 className="text-left">Total Points</h2>
+                <h2 className="text-left text-2xl">Total Points</h2>
                 <h2 className='text-2xl font-bold text-right'>
                   {playerPoints.find(y => y[0] === x)![1]}
                 </h2>
               </div>
 
-              <button key={x} className="btn btn-lg btn-primary"
+              <button key={x} className="btn btn-lg  text-lg btn-success"
                 onClick={() => gameOver(x)}>
                 {x} Won
               </button>

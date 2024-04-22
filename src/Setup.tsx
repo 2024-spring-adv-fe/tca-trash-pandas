@@ -53,7 +53,7 @@ export const Setup: FC<SetupProps> = ({
             className='flex flex-col gap-3'
         >
             <button
-                className="btn btn-lg btn-primary"
+                className="btn btn-lg btn-success text-lg"
                 onClick={
                     () => {
                         setChosenPlayers(
@@ -82,7 +82,7 @@ export const Setup: FC<SetupProps> = ({
                         onChange={(e) => setNewPlayerName(e.target.value)}
                     />
                     <button
-                        className='btn btn-md btn-primary ml-3'
+                        className='btn btn-md btn-success ml-3 text-lg'
                         onClick={validateAndAddNewPlayer}
                     >
                         Add
@@ -95,7 +95,7 @@ export const Setup: FC<SetupProps> = ({
                             key={x.name}>
                             <label className="flex">
                                 <input type="checkbox"
-                                    className="checkbox checkbox-primary"
+                                    className="checkbox checkbox-success"
                                     checked={x.checked}
                                     onChange={() => setAvailablePlayers([
                                         ...availablePlayers.map(y => ({
@@ -106,7 +106,7 @@ export const Setup: FC<SetupProps> = ({
                                         }))
                                     ])}
                                 />
-                                <span className="label-text ml-3 ">{x.name}</span>
+                                <span className="label-text ml-3 text-lg ">{x.name}</span>
                             </label>
                         </div>
                     ))
