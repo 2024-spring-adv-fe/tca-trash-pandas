@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tca-trash-pandas/static/css/main.304a8ccd.css",
-    "main.js": "/tca-trash-pandas/static/js/main.e1c9dfa1.js",
+    "main.css": "/tca-trash-pandas/static/css/main.ba74b003.css",
+    "main.js": "/tca-trash-pandas/static/js/main.8bb601e6.js",
     "static/js/592.5c8b5b80.chunk.js": "/tca-trash-pandas/static/js/592.5c8b5b80.chunk.js",
     "index.html": "/tca-trash-pandas/index.html",
-    "main.304a8ccd.css.map": "/tca-trash-pandas/static/css/main.304a8ccd.css.map",
-    "main.e1c9dfa1.js.map": "/tca-trash-pandas/static/js/main.e1c9dfa1.js.map",
+    "main.ba74b003.css.map": "/tca-trash-pandas/static/css/main.ba74b003.css.map",
+    "main.8bb601e6.js.map": "/tca-trash-pandas/static/js/main.8bb601e6.js.map",
     "592.5c8b5b80.chunk.js.map": "/tca-trash-pandas/static/js/592.5c8b5b80.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.304a8ccd.css",
-    "static/js/main.e1c9dfa1.js"
+    "static/css/main.ba74b003.css",
+    "static/js/main.8bb601e6.js"
   ]
 }
