@@ -66,37 +66,66 @@ export const Play: FC<PlayProps> = ({
         chosenPlayers.map(x => (
           <div key={x} className="card-bordered w-96 bg-base-200  shadow-xl ">
             <div className="card-body">
-              <h2 className='card-title'>
+              <h2 className='card-title text-3xl text-bold justify-center'>
                 {x}
               </h2>
               <div className="card-actions justify-center p-2">
-                <p className="self-center text-lg">Points Stashed</p>
-                <button className="btn btn-info"
-                  onClick={() =>
-                    setPlayerPoints(playerPoints.map(y => [
-                      y[0]
-                      , y[0] === x ? y[1] + 1 : y[1]
-                    ])
-                    )} > +1  </button>
-                <button className="btn btn-info"
-                  onClick={() =>
-                    setPlayerPoints(playerPoints.map(y => [
-                      y[0]
-                      , y[0] === x ? y[1] + 5 : y[1]
-                    ])
-                    )} > +5  </button>
-                <button className="btn btn-info"
-                  onClick={() =>
-                    setPlayerPoints(playerPoints.map(y => [
-                      y[0]
-                      , y[0] === x ? y[1] + 10 : y[1]
-                    ])
-                    )} > +10  </button>
+                <div>
+                  <h2 className="text-left text-2xl">Points Stashed</h2>
+                </div>
+                <div>
+                  <button className="btn btn-warning"
+                    onClick={() => setPlayerPoints(
+                      playerPoints.map(y => [
+                        y[0]
+                        , y[0] === x ? y[1] - 1 : y[1]
+                      ])
+                    )}
+                  >
+                    - 1
+                  </button>
+                  <button className="btn btn-warning"
+                    onClick={() => setPlayerPoints(
+                      playerPoints.map(y => [
+                        y[0]
+                        , y[0] === x ? y[1] - 5 : y[1]
+                      ])
+                    )}
+                  >
+                    - 5
+                  </button>
+                  <button className="btn btn-info"
+                    onClick={() =>
+                      setPlayerPoints(playerPoints.map(y => [
+                        y[0]
+                        , y[0] === x ? y[1] + 1 : y[1]
+                      ])
+                      )} > +1
+                  </button>
+                  <button className="btn btn-info"
+                    onClick={() =>
+                      setPlayerPoints(playerPoints.map(y => [
+                        y[0]
+                        , y[0] === x ? y[1] + 5 : y[1]
+                      ])
+                      )} > +5
+                  </button>
+                  <button className="btn btn-info"
+                    onClick={() =>
+                      setPlayerPoints(playerPoints.map(y => [
+                        y[0]
+                        , y[0] === x ? y[1] + 10 : y[1]
+                      ])
+                      )} > +10
+                  </button>
+                </div>
                 <h2 className="text-left text-2xl">Total Points</h2>
                 <h2 className='text-2xl font-bold text-right'>
                   {playerPoints.find(y => y[0] === x)![1]}
                 </h2>
+
               </div>
+
 
               <button key={x} className="btn btn-lg  text-lg btn-success"
                 onClick={() => gameOver(x)}>

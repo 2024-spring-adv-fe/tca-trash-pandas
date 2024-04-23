@@ -103,6 +103,8 @@ export const getPointFunFacts = (results: GameResult[]): PointFunFacts[] => {
     const players = getPreviousPlayers(results);
     return players.map(
         x => getPointEntryForPlayer(results, x)
+    ).sort(
+        (a, b) => b.avg - a.avg
     )
 }
 
