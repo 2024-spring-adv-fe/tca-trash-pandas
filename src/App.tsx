@@ -45,7 +45,7 @@ const App = () => {
             setDialogEmail(savedEmail);
 
             const cloudGameResults = await loadGamesFromCloud(
-              savedEmail
+              savedEmail.toLowerCase()
               , "tca-trash-pandas-24s"
             );
 
@@ -70,7 +70,7 @@ const App = () => {
   const addNewGameResult = async (result: GameResult) => {
     // Save the game result to the cloud.
     await saveGameToCloud(
-      cloudApiEmail // hard coded for now
+      cloudApiEmail.toLowerCase() // hard coded for now
       , "tca-trash-pandas-24s"
       , result.end
       , result
