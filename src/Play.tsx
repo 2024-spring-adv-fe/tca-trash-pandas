@@ -37,8 +37,8 @@ export const Play: FC<PlayProps> = ({
 
   return (
     <div className='flex flex-col gap-3'>
-      <div className='card-bordered w-96 bg-base-200  shadow-xl'>
-        <div className='card-body '>
+      <div className='card bg-base-200 shadow-xl'>
+        <div className='card-body  '>
           <ul className='list-disc'>
             <li>
               Play Game as normal
@@ -64,7 +64,7 @@ export const Play: FC<PlayProps> = ({
 
       {
         chosenPlayers.map(x => (
-          <div key={x} className="card-bordered w-96 bg-base-200  shadow-xl ">
+          <div key={x} className="card bg-base-200 shadow-xl ">
             <div className="card-body">
               <h2 className='card-title text-3xl text-bold justify-center'>
                 {x}
