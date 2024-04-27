@@ -115,7 +115,7 @@ const App = () => {
   ]);
 
   return (
-    <div className="App" data-theme={darkMode ? "dark" : "light"}>
+    <div className="App" data-theme={darkMode ? "dark" : "winter"}>
       <div className='navbar bg-base-300'>
         {
           title === AppTitle &&
